@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../styles/master.scss';
 
 export default ({ Component, pageProps }) => (
 	<>

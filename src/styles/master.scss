@@ -1,0 +1,165 @@
+@mixin dottedBG($color, $spacing, $size) {
+	background-position: 0 0, $spacing $spacing;
+	background-attachment: fixed;
+	background-size: ($spacing * 2) ($spacing * 2);
+	background-image: radial-gradient($color $size, transparent $size), radial-gradient($color $size, transparent $size);
+}
+
+@mixin dotted($darkColor, $lightColor, $spacing, $size) {
+	background-position: 0 0, $spacing $spacing;
+	background-attachment: fixed;
+	background-size: ($spacing * 2) ($spacing * 2);
+	background-image: radial-gradient($color $size, transparent $size), radial-gradient($color $size, transparent $size);
+}
+
+.dotted {
+	$size: 27px;
+	$c1: #ccc;
+	$c2: rgba(#222, 0.25);
+
+	background-position: 0 0, $size $size;
+	background-attachment: fixed;
+	background-size: ($size * 2) ($size * 2);
+
+	&.light {
+		background-image: radial-gradient($c1 1px, transparent 1px), radial-gradient($c1 1px, transparent 1px);
+	}
+
+	&.dark {
+		background-image: radial-gradient($c2 1px, black 1px), radial-gradient($c2 1px, black 1px);
+	}
+
+	@media (prefers-color-scheme: light) {
+		background-image: radial-gradient($c1 1px, transparent 1px), radial-gradient($c1 1px, transparent 1px);
+	}
+
+	@media (prefers-color-scheme: dark) {
+		background-image: radial-gradient($c2 1px, transparent 1px), radial-gradient($c2 1px, transparent 1px);
+	}
+}
+
+.pin {
+	z-index: 2;
+	position: absolute;
+
+	&:not(.nav) {
+		padding: 15px 25px;
+	}
+
+	&.fixed {
+		position: fixed;
+	}
+
+	&.top {
+		top: 0;
+
+		&.right {
+			right: 0;
+		}
+
+		&.left {
+			left: 0;
+		}
+	}
+
+	&.bottom {
+		bottom: 0;
+
+		&.right {
+			right: 0;
+		}
+
+		&.left {
+			left: 0;
+		}
+	}
+}
+
+.nav {
+	list-style-type: none;
+	margin: 0 auto;
+	padding: 0 !important;
+
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+
+	&.left {
+		padding-left: 25px;
+	}
+
+	&.right {
+		padding-right: 25px;
+	}
+
+	&.vertical {
+		flex-direction: column;
+		padding: 15px;
+
+		a {
+			transition: opacity 0.15s ease-in-out;
+			text-decoration: none;
+
+			@media (prefers-color-scheme: dark) {
+				color: white;
+			}
+
+			@media (prefers-color-scheme: light) {
+				color: black;
+			}
+
+			&:hover {
+				opacity: 0.75;
+			}
+		}
+
+		li {
+			padding: 5px;
+			margin: 10px auto;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			&:first-child {
+				margin-top: 0;
+			}
+		}
+	}
+
+	li {
+		display: inline-block;
+		padding: 15px;
+		font-size: 1.5em;
+		margin: 0;
+
+		&.npm a:hover {
+			color: rgb(189, 68, 62);
+		}
+
+		&.instagram a:hover {
+			color: tomato;
+		}
+
+		&.twitter a:hover {
+			color: rgb(99, 175, 238);
+		}
+	}
+}
+
+// Swift, wink, wink ;)
+.systemBackground {
+	background: #ffffff;
+
+	@media (prefers-color-scheme: light) {
+		background: #ffffff;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		background: #000000;
+	}
+}
+
+.editor {
+	transition: all 0.15s ease-in-out;
+}
