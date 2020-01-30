@@ -11,4 +11,4 @@ It's all `regex` :v:
 You can contribute by improving this big function [here](utils)
 
 
-[utils]: /src/utils/index.ts
+[utils]: ./src/utils/index.ts
