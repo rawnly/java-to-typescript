@@ -8,7 +8,4 @@ As a `FullStack` I always need to convert some `java` classes to `TypeScript` in
 It's all `regex` :v:
 
 ## Contribute
-You can contribute by improving this big function [here](utils)
-
-
-[utils]: /java-to-typescript/blob/master/src/utils/index.ts
+You can contribute by improving this big function [here](/src/utils/index.ts)
