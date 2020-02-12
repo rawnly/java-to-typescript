@@ -1,39 +1,32 @@
 import { NextPage } from 'next';
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
+import { Row, Col } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import getConfig from 'next/config';
 
 import { transformJavaToTypescript } from '../utils';
 const CodeEditor = dynamic(import('../components/editor'), { ssr: false });
-import { Row, Col, FormGroup } from 'reactstrap';
+
 import { Theme } from '../components/editor';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import Head from 'next/head';
+import useAnalytics from '../components/useAnalytics';
 
 interface Props {}
 
 const Page: NextPage<Props> = (_) => {
+	const { publicRuntimeConfig: env } = getConfig();
+
+	useAnalytics(env.GA_ID);
+
 	const [javaCode, setJavaCode] = useState('');
 	const [theme, setTheme] = useState<Theme>('dracula');
 	const [fontSize, setFontSize] = useState(20);
-	const formatCode = (code: string) => code.replace(/\t/gi, '    ');
+	const formatCode = (code: string) => code.replace(/\t/gi, ' '.repeat(4));
 
 	return (
 		<>
-			<Head>
-				<title>Java -> TypeScript</title>
-
-				<meta httpEquiv='X-UA-Compatible' content='IE=7' />
-				<meta name='description' content='Java -> TypeScript.' />
-				<meta name='theme-color' content='#0080ff' />
-
-				<meta property='og:site_name' content='Java -> TypeScript' />
-				<meta property='og:title' content='Java -> TypeScript' />
-				<meta property='og:description' content='🧪 Java -> TypeScript' />
-				<meta property='og:url' content='https://java-to-typescript.now.sh' />
-
-				<meta name='twitter:site' content='@fedevitaledev' />
-			</Head>
+			<div id='codefund'></div>
 			<section className='w-100vw h-100vh p-4 d-flex justify-content-center align-items-center container-fluid dotted'>
 				<div className='pin top left'>
 					<h3>Java to TypeScript</h3>
